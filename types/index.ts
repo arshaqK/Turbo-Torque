@@ -46,3 +46,19 @@ export interface targetItemType {
   id: string;
   type: string;
 }
+
+export type CarType = {
+  _id: string;
+  ownerId: string; // or { _id: string; name: string; } if you populate it
+  title: string;
+  description?: string;
+  location: string;
+  price?: number;
+  pricePerDay?: number;
+  availability: boolean;
+  images: string[];
+  isForSale: boolean;
+  isForRent: boolean;
+  createdAt: string; // Dates usually come as strings from APIs
+  updatedAt: string;
+};

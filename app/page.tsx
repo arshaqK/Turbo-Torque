@@ -8,7 +8,7 @@ export default function Home() {
       <section className="flex flex-col-reverse md:flex-row items-center justify-center max-w-7xl mx-auto gap-10 h-screen">
         <div className="text-center md:text-left space-y-6 max-w-xl">
           <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
-            Drive Your Dream with <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-600">Pak Wheels</span>!
+            Drive Your Dream with <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-600">Turbo Torque</span>!
           </h1>
 
           <p className="text-xl text-gray-700">Buy, sell, or rent cars the smart way. Fast, secure, and hassle-free.</p>
@@ -31,7 +31,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="mt-24 max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-8">Why Choose Pak Wheels?</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-8">Why Choose Turbo Torque?</h2>
 
         <div className="grid md:grid-cols-3 gap-10 text-left">
           {[
@@ -67,9 +67,9 @@ export default function Home() {
       {/* Call to Action */}
       <section className="mt-24 text-center max-w-3xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready to Make Your Move?</h2>
-        <p className="text-lg text-gray-700 mb-8">Whether you&#39;re buying or selling, Pak Wheels has your back. Join the community today.</p>
-        <Link href="/used-cars" className="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-full text-xl hover:opacity-90 transition">
-          Explore used cars
+        <p className="text-lg text-gray-700 mb-8">Whether you&#39;re buying or selling, Turbo Torque has your back. Join the community today.</p>
+        <Link href="/post-ad" className="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-full text-xl hover:opacity-90 transition">
+          Start Selling
         </Link>
       </section>
     </main>

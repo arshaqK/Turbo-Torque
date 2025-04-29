@@ -45,7 +45,7 @@ const NavBar = () => {
     <nav className="flex flex-row justify-between p-[1rem] px-[2rem] items-center from-black to-neutral-800 bg-gradient-to-tl fixed w-full z-[9998] top-0 left-0">
       <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
         <Image src="/logo.webp" width={30} height={25.7} className="h-auto w-auto cursor-pointer" alt="logo" />
-        <span className="self-center text-2xl font-semibold whitespace-nowrap text-white hover:text-neutral-200 transition duration-200 cursor-pointer">Pak Wheels</span>
+        <span className="self-center text-2xl font-semibold whitespace-nowrap text-white hover:text-neutral-200 transition duration-200 cursor-pointer">Turbo Torque</span>
       </Link>
 
       <div className="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
@@ -73,7 +73,7 @@ const NavBar = () => {
           </Link>
         )}
 
-        <button onClick={() => window.open("https://github.com/aliasif78/pak-wheels", "_blank")} className="text-white bg-gradient-to-r from-[#10a37f] to-[#27826c] hover:bg-gradient-to-bl font-medium rounded-lg text-md px-4 py-2 text-center flex flex-row gap-2 items-center">
+        <button onClick={() => window.open("https://github.com/arshaqK/Turbo-Torque", "_blank")} className="text-white bg-gradient-to-r from-[#10a37f] to-[#27826c] hover:bg-gradient-to-bl font-medium rounded-lg text-md px-4 py-2 text-center flex flex-row gap-2 items-center">
           <FaGithub className="text-xl cursor-pointer" />
           <span className="cursor-pointer">GitHub</span>
         </button>

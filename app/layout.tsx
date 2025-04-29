@@ -14,8 +14,8 @@ import { Slide, ToastContainer } from "react-toastify";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pak Wheels",
-  description: "Users can buy, sell & rent cars on Pak Wheels",
+  title: "Turbo Torque",
+  description: "Users can buy, sell & rent cars on Turbo Torque.",
 };
 
 export default function RootLayout({

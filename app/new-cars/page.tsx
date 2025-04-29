@@ -37,9 +37,11 @@ const NewCarsPage = () => {
   const [brands, setBrands] = useState<Array<BrandType>>([]);
   const [selectedBrand, setSelectedBrand] = useState<BrandType | null>(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [newCars, setNewCars] = useState<Array<CarType>>([]);
 
   useEffect(() => {
     fetchBrands();
+    fetchNewCars();
   }, []);
 
   const fetchBrands = async () => {
@@ -49,6 +51,16 @@ const NewCarsPage = () => {
     } catch (error) {
       console.error(error);
       toast.error("An error occurred");
+    }
+  };
+
+  const fetchNewCars = async () => {
+    try {
+      const data = await axios.get("/api/cars"); // API endpoint to fetch new cars
+      setNewCars(data.data.cars); // Set the dynamic car data
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while fetching cars");
     }
   };
 
@@ -97,6 +109,27 @@ const NewCarsPage = () => {
           </div>
         </div>
       )}
+
+      {/* Render Newly Fetched Cars Below the Popup */}
+      <div className="mt-10 w-full max-w-6xl">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Explore New Cars</h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          {newCars.length > 0 ? (
+            newCars.map((car, index) => (
+              <div key={index} onClick={() => handleBrandClick(brands[0])} className="bg-white rounded-xl shadow-md border p-4 flex flex-col items-center hover:shadow-lg transition duration-300">
+                <div className="w-44 h-44 relative">
+                  <Image src={"/haval.png"} alt={"asd"} width={500} height={500} className="object-contain" />
+                </div>
+                <p className="text-lg font-medium text-gray-700 text-center">{car.title}</p>
+                <p className="text-gray-600 text-center">Rs. {car.price}</p>
+              </div>
+            ))
+          ) : (
+            <div className="w-full text-center text-gray-600">No cars available at the moment.</div>
+          )}
+        </div>
+      </div>
 
       <div className="max-w-4xl mt-16 text-center text-gray-700">
         <h3 className="text-2xl font-semibold mb-4">Explore the Latest Innovations</h3>
