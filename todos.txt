@@ -1,0 +1,15 @@
+Recaptcha
+Email Verification
+Password Reset
+Next Auth
+Remember me
+2FA (email, SMS, or an authenticator app like Google Authenticator)
+Validating all information's structure in the backend (e.g email, phone number, etc)
+Cloudflare for rate limiting/attempt lockout on passwords (express-rate-limit)
+CSRF
+Companies
+New & used Cars
+TOS
+Cloud for images
+Dark & light mode
+Allow access to the brands only once they are verified
