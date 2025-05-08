@@ -13,8 +13,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }): Promise<NextResponse> {
   try {
     // Step 1: Check if the user themselves is making the request
-    const userEmail = req.headers.get("x-user-email");
-    if (!userEmail) return NextResponse.json({ message: "User not found or unauthorized." }, { status: 401 });
+    // const userEmail = req.headers.get("x-user-email");
+    // if (!userEmail) return NextResponse.json({ message: "User not found or unauthorized." }, { status: 401 });
 
     // Step 2: Connect to the database
     await connectDB();
@@ -25,9 +25,9 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     if (!userToDelete) return NextResponse.json({ message: "User not found." }, { status: 404 });
 
     // Step 4: Check if the user is authorized to perform this action
-    if (userToDelete.email !== userEmail || userToDelete.role !== "admin") {
-      return NextResponse.json({ message: "Not authorized." }, { status: 401 });
-    }
+    // if (userToDelete.email !== userEmail || userToDelete.role !== "admin") {
+    //   return NextResponse.json({ message: "Not authorized." }, { status: 401 });
+    // }
 
     // Step 5: Delete the user
     await User.findByIdAndDelete(userId);

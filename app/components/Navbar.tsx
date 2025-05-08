@@ -57,7 +57,7 @@ const NavBar = () => {
           Used
         </Link>
 
-        <Link href="new-cars" className="block py-2 px-3 bg-transparent rounded text-white hover:text-[#2acea5] md:p-0 cursor-pointer transition duration-200">
+        <Link href="rentals" className="block py-2 px-3 bg-transparent rounded text-white hover:text-[#2acea5] md:p-0 cursor-pointer transition duration-200">
           Rent
         </Link>
       </div>

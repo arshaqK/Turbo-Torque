@@ -7,7 +7,7 @@ import Image from "next/image";
 
 interface CarType {
   id: string;
-  name: string;
+  title: string;
   image: string;
   price: string;
 }
@@ -15,19 +15,19 @@ interface CarType {
 const placeholderCars: CarType[] = [
   {
     id: "1",
-    name: "H6 HEV",
+    title: "H6 HEV",
     image: "/haval.png",
     price: "Rs. 12,500,000",
   },
   {
     id: "2",
-    name: "H6 HEV",
+    title: "H6 HEV",
     image: "/haval.png",
     price: "Rs. 12,500,000",
   },
   {
     id: "3",
-    name: "H6 HEV",
+    title: "H6 HEV",
     image: "/haval.png",
     price: "Rs. 12,500,000",
   },
@@ -100,8 +100,8 @@ const NewCarsPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {placeholderCars.map((car) => (
                 <div key={car.id} className="bg-white rounded-xl shadow border p-4 w-full h-full flex flex-col items-center text-center">
-                  <Image src={car.image} alt={car.name} width={500} height={200} className="mb-3" />
-                  <h3 className="text-xl font-semibold text-gray-800">{car.name}</h3>
+                  <Image src={car.image} alt={car.title} width={500} height={200} className="mb-3" />
+                  <h3 className="text-xl font-semibold text-gray-800">{car.title}</h3>
                   <p className="text-gray-600 text-lg">{car.price}</p>
                 </div>
               ))}

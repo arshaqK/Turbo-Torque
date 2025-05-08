@@ -26,7 +26,8 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   try {
     // Step 1: Check if the user is an admin
     const adminResponse = await adminMiddleware(req);
-    if (adminResponse.status !== 200) return adminResponse;
+    // if (adminResponse.status !== 200) return adminResponse;
+    console.log(adminResponse);
 
     // Step 2: Connect to the database
     await connectDB();

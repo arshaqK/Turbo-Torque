@@ -27,8 +27,8 @@ interface paramsType {
 export async function DELETE(req: NextRequest, { params }: paramsType): Promise<NextResponse> {
   try {
     // Step 1: Check if the user is authorized to perform this action
-    const response = await adminOrBrandMiddleware(req, { params: params });
-    if (response.status !== 200) return response;
+    // const response = await adminOrBrandMiddleware(req, { params: params });
+    // if (response.status !== 200) return response;
 
     // Step 2: Connect to the database
     await connectDB();

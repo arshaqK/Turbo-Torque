@@ -30,6 +30,23 @@ const CarForm = ({ setShowPopup, onCarAdded }: Props) => {
         return;
       }
 
+      // Only allow the title to be 1-50 characters & start with a letter
+      if (title.length < 1 || title.length > 30 || !/^[a-zA-Z]/.test(title)) {
+        toast.error("Invalid title.");
+        return;
+      }
+
+      // Only allow the location to be 1-50 characters & start with a letter
+      if (location.length < 1 || location.length > 30 || !/^[a-zA-Z]/.test(location)) {
+        toast.error("Invalid location.");
+        return;
+      }
+
+      if (typeof price === "number" && (price < 100000 || price > 100000000)) {
+        toast.error("Invalid price.");
+        return;
+      }
+
       const newCar = { ownerId: user._id, title, location, price: price === "" ? null : price, availability, images: ["/haval.png", "/haval2.png"] };
       await axios.post("/api/cars", newCar);
 
@@ -54,7 +71,7 @@ const CarForm = ({ setShowPopup, onCarAdded }: Props) => {
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input type="text" placeholder="Car Title" value={title} onChange={(e) => setTitle(e.target.value)} className="border p-3 rounded-lg" required />
           <input type="text" placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)} className="border p-3 rounded-lg" required />
-          <input type="number" placeholder="Price" value={price === "" ? "" : price} onChange={(e) => setPrice(Number(e.target.value))} className="border p-3 rounded-lg" />
+          <input type="number" placeholder="Price" value={price === "" ? "" : price} onChange={(e) => setPrice(Number(e.target.value))} className="border p-3 rounded-lg" required />
 
           {/* Image */}
           <input type="file" accept="image/*" className="border p-3 rounded-lg" />

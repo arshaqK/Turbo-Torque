@@ -79,6 +79,14 @@ const Login = () => {
       return;
     }
 
+    // Check if the email is valid
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(formData.email)) {
+      setIsEmail(false);
+      return;
+    }
+
     // Reset the form
     formRef.current.reset();
 
@@ -119,12 +127,12 @@ const Login = () => {
 
       <Form ref={formRef} action={handleFormSubmit} className="flex flex-col gap-[1rem] w-[25vw] justify-center items-center">
         {/* Send Confirmation Email */}
-        <input name="email" type="text" value={formData.email} onChange={handleInputChange} className={`rounded-md px-4 py-3 border-[1px] ${isEmail && !existingEmail ? "border-neutral-300 focus:border-[#10a37f]" : "border-red-500"} focus:outline-none w-full`} placeholder="Email Address" />
+        <input name="email" type="email" value={formData.email} onChange={handleInputChange} className={`rounded-md px-4 py-3 border-[1px] ${isEmail && !existingEmail ? "border-neutral-300 focus:border-[#10a37f]" : "border-red-500"} focus:outline-none w-full`} placeholder="Email Address" />
 
         {(!isEmail || existingEmail) && (
           <span className="flex flex-row gap-1 justify-center items-center text-red-500 text-sm font-light">
             <RiErrorWarningLine className="text-lg" />
-            {!isEmail ? "Please provide an email." : "Incorrect email address."}
+            {!isEmail ? "Please provide a correct email." : "Incorrect email address."}
           </span>
         )}
 

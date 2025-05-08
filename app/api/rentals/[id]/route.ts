@@ -6,9 +6,10 @@ import User from "@/models/User";
 
 //route to get specific rental requests
 export async function GET(req: Request, { params }: { params: { id: string } }) {
+    console.log(params.id);
     try {
         await connectDB();
-        const rentals = await RentalRequest.findById(params.id)
+        const rentals = await RentalRequest.find({ renterId: params.id })
             .populate("renterId", "name email phoneNumber") // Fetch only name, email, and phoneNumber
             .populate("ownerId", "name email phoneNumber") // Fetch only name, email, and phoneNumber
             .populate("carId"); // Fetch full car details
@@ -67,4 +68,3 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
         return NextResponse.json({ message: "Error deleting rental request" }, { status: 500 });
     }
 };
-

@@ -51,6 +51,7 @@ export async function POST(request: Request): Promise<NextResponse<{ message: st
             images,
             isForSale: !!isForSale,
             isForRent: !!isForRent,
+            availability: true
         });
 
         return NextResponse.json({ message: "Car listed successfully", car: newCar }, { status: 201 });

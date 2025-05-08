@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { MapPin, Calendar, Gauge, Car, X, Phone, MessageSquare } from "lucide-react";
+import { User, MapPin, Calendar, Gauge, Car, X, Phone, MessageSquare } from "lucide-react";
 
 interface UsedCarType {
   id: string;
@@ -11,8 +11,9 @@ interface UsedCarType {
   mileage: string;
   modelYear: number;
   city: string;
-  phone: string;
-  comments: string;
+  sellerName: string;
+  sellerPhone: string;
+  sellerComments: string;
 }
 
 const parseNumber = (str: string) => parseInt(str.replace(/[^0-9]/g, "")) || 0;
@@ -171,6 +172,9 @@ const UsedCarsPage = () => {
 
             <div className="flex flex-col gap-2 text-gray-600 mb-4">
               <div className="flex items-center gap-2">
+                <User className="w-5 h-5" /> Seller: {selectedCar.sellerName}
+              </div>
+              <div className="flex items-center gap-2">
                 <Gauge className="w-5 h-5" /> Mileage: {selectedCar.mileage}
               </div>
               <div className="flex items-center gap-2">
@@ -180,10 +184,10 @@ const UsedCarsPage = () => {
                 <MapPin className="w-5 h-5" /> City: {selectedCar.city}
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-5 h-5" /> Contact: {selectedCar.phone}
+                <Phone className="w-5 h-5" /> Contact: {selectedCar.sellerPhone}
               </div>
               <div className="flex items-start gap-2">
-                <MessageSquare className="w-5 h-5 mt-1" /> <span>{selectedCar.comments}</span>
+                <MessageSquare className="w-5 h-5 mt-1" /> <span>{selectedCar.sellerComments}</span>
               </div>
             </div>
           </div>

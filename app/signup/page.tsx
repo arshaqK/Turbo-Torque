@@ -127,6 +127,52 @@ const SignUp = () => {
       return;
     }
 
+    // Check if the phone number is valid
+    if (formData.phoneNumber && (formData.phoneNumber?.lastIndexOf("+") > 0 || formData.phoneNumber.length < 10 || formData.phoneNumber.length > 12 || /[^0-9+]/.test(formData.phoneNumber))) {
+      setIsPhoneNumber(false);
+      return;
+    }
+
+    // Check if the password is strong
+    if (formData.password.length < 8 || formData.password.length > 20 || !/[A-Z]/.test(formData.password) || !/[a-z]/.test(formData.password) || !/[0-9]/.test(formData.password) || !/[^A-Za-z0-9]/.test(formData.password)) {
+      setIsPassword(false);
+      return;
+    }
+
+    // Check if the email is valid
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(formData.email)) {
+      setIsEmail(false);
+      return;
+    }
+
+    const localPart = formData.email.split("@")[0];
+    const hasLetter = /[a-zA-Z]/.test(localPart); // Must contain at least one letter
+    const startsWithLetter = /^[a-zA-Z]/.test(localPart); // Must NOT start with a letter
+
+    if (!hasLetter || !startsWithLetter) {
+      setIsEmail(false);
+      return;
+    }
+
+    const localPart2 = formData.email.split("@")[1];
+    const hasLetter2 = /[a-zA-Z]/.test(localPart2); // Must contain at least one letter
+    const startsWithLetter2 = /^[a-zA-Z]/.test(localPart2); // Must NOT start with a letter
+
+    if (!hasLetter2 || !startsWithLetter2) {
+      setIsEmail(false);
+      return;
+    }
+
+    // Check if the name only contains letters & is less than 30 characters
+    const nameRegex = /^[a-zA-Z\s]+$/;
+
+    if (!nameRegex.test(formData.name) || formData.name.trim().length > 30) {
+      setIsName(false);
+      return;
+    }
+
     formRef.current.reset();
 
     // Clean up the form data
@@ -141,7 +187,7 @@ const SignUp = () => {
 
     // Now, hit a backend request to sign up the user
     try {
-      const endpoint = `/api/${isUser ? "users" : "brands"}/auth/signup`;
+      const endpoint = `/${isUser ? "users" : "brands"}`;
       const response = await axios.post(`/api/${endpoint}/auth/signup`, formData);
 
       if (isUser) setUser(response.data.user);
@@ -266,7 +312,7 @@ const SignUp = () => {
         {!isName && (
           <span className="flex flex-row gap-1 justify-center items-center text-red-500 text-sm font-light">
             <RiErrorWarningLine className="text-lg" />
-            Please provide a name.
+            Please provide a correct name.
           </span>
         )}
 
@@ -276,7 +322,7 @@ const SignUp = () => {
         {(!isEmail || existingEmail) && (
           <span className="flex flex-row gap-1 justify-center items-center text-red-500 text-sm font-light">
             <RiErrorWarningLine className="text-lg" />
-            {!isEmail ? "Please provide an email." : "This email is already being used."}
+            {!isEmail ? "Please provide a correct email." : "This email is already being used."}
           </span>
         )}
 
@@ -315,7 +361,7 @@ const SignUp = () => {
         {(!isPhoneNumber || existingPhoneNumber || (isLogo !== null && !isLogo)) && (
           <span className="flex flex-row gap-1 justify-center items-center text-red-500 text-sm font-light">
             <RiErrorWarningLine className="text-lg" />
-            {!isPhoneNumber ? "Please provide an phone number." : existingPhoneNumber ? "This number is already being used." : logoError}
+            {!isPhoneNumber ? "Please provide a correct phone number." : existingPhoneNumber ? "This number is already being used." : logoError}
           </span>
         )}
 
@@ -325,7 +371,7 @@ const SignUp = () => {
         {!isPassword && (
           <span className="flex flex-row gap-1 justify-center items-center text-red-500 text-sm font-light">
             <RiErrorWarningLine className="text-lg" />
-            Please provide a password.
+            Please provide a correct password.
           </span>
         )}
 

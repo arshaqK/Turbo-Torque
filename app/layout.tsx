@@ -15,7 +15,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Turbo Torque",
-  description: "Users can buy, sell & rent cars on Turbo Torque.",
+  description: "Users can buy, sell & rent cars on Turbo Torque",
 };
 
 export default function RootLayout({
